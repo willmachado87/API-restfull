@@ -1,5 +1,5 @@
 
-// executar server api '' nodemon server.js '' //
+// Executar server api '' nodemon server.js '' //
 const knex = require('knex')({
     client: 'mysql',
     connection: {
@@ -26,7 +26,7 @@ server.use(restify.plugins.bodyParser());
 const corsMiddleware = require('restify-cors-middleware')
  
 const cors = corsMiddleware({
-  preflightMaxAge: 5, //Optional
+  preflightMaxAge: 5, 
   origins: ['*'],
   allowHeaders: ['API-Token'],
   exposeHeaders: ['API-Token-Expiry']
@@ -41,7 +41,7 @@ server.listen(3000, function() {
 });
 
 
-//rotas-------------^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 //lista todos dados da tabela cervejas
 server.get('/getallceva', (req, res, next) => {
     knex('cervejas').then(dados => {
@@ -102,7 +102,6 @@ server.get('/get/:id', (req, res, next) => {
             res.send(dados);
         }, next);
 });
-//-----------------------------------------------------------------------------------
 
 //procura um usuario
 server.get('/getusuario/:email', (req, res, next) => {
@@ -124,7 +123,6 @@ server.post('/novousuario', (req, res, next) => {
     }, next);
 });
 
-//----------------------------------------------------------------------------------------
 //adiciona pedido
 server.post('/novopedido', (req, res, next) => {
     knex('pedidos').insert(req.body).then(dados => { // se tudo der certo knex retorna o ID do item
